@@ -155,6 +155,10 @@
                 start: function () {
                     this.moveTimer && clearInterval(this.moveTimer);
                     this.moveTimer = setInterval(() => {
+                        if(this.gameOver){
+                          this.moveTimer && clearInterval(this.moveTimer);
+                          return;
+                        }
                         !this.gameOver && this.move();
                         this.noDeath && this.randomDirectionInRandomStep();
                     }, this.moveTimeout);
